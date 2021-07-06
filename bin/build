@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+layers_dir="$1"
+env_dir="$2/env"
+plan="$3"
+
+echo "---> Owner Buildpack layer_dir ${layers_dir} "
+echo "---> Owner Buildpack env_dir ${env_dir}"
+echo "---> Owner Buildpack plan  ${plan}"
+
+owner_layer="$layers_dir"/owner
+mkdir -p "$owner_layer"
+
+ruby_version=$(cat "$plan" | yj -t | jq -r '.entries[] | select(.name == "ruby") | .metadata.version')
+echo "---> Downloading and extracting Ruby $ruby_version"
+
+echo "---> Inject the owner of the image"
+echo "This image has been built by my TSM instance !" > ${owner_layer}/owner.txt
+
+echo -e 'launch = true' > "$layers_dir/owner.toml"
+
+
+# 9. ADD A BOM
+cat >> "$layers_dir/launch.toml" <<EOL
+[[bom]]
+name = "owner"
+
+[bom.metadata]
+version = "$ruby_version"
+
+[[labels]]
+key = "kpack.builder.hostname"
+value = "${HOSTNAME}"
+
+[[labels]]
+key = "kpack.builder.instance"
+value = "mycompany-instance-one"
+EOL
+
+
+

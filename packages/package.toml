@@ -1,0 +1,2 @@
+[buildpack]
+uri = "../mycompany-owner-buildpack"
