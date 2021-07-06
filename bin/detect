@@ -6,16 +6,4 @@ plan="$2"
 
 echo "plan: ${plan}"
 
-echo "Try to detecte it's a nodejs app that should have a package.json file"
-if [[ ! -f package.json ]]; then
-   exit 100
-fi
-
-version="42"
-echo "provides = [{ name = \"ruby\" }]" > "$plan"
-echo "requires = [{ name = \"ruby\", metadata = { version = \"$version\" } }]" >> "$plan"
-echo "----"
-cat ${plan}
-echo "----"
-
 exit 0

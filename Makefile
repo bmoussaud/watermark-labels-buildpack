@@ -4,12 +4,6 @@ BUILDPACK_IMAGE=owner-buildpack
 BUILDPACK_VERSION=0.0.3
 BUILDPACK_CNB=owner-buildpack.cnb
 
-# pack config default-builder gcr.io/paketo-buildpacks/builder:base
-buildpack:
-	pack build $(APP_IMAGE) --builder paketobuildpacks/builder:base --buildpack ./mycompany-owner-buildpack
-
-buildpack-image-labels:
-	pack build $(APP_IMAGE) --builder paketobuildpacks/builder:base --buildpack paketo-buildpacks/image-labels	-e BP_IMAGE_LABELS=kpack.builder.hostname=gimmick,kpack.builder.instance=tbs-1
 	
 inspect: buildpack
 	pack inspect $(APP_IMAGE) 
