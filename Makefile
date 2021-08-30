@@ -1,10 +1,9 @@
-
 APP_IMAGE=myorg/cnb-nodejs
+
 BUILDPACK_IMAGE=watermark-labels-buildpack
 BUILDPACK_VERSION=0.0.3
 BUILDPACK_CNB=watermark-labels-buildpack.cnb
 
-	
 inspect: buildpack
 	pack inspect $(APP_IMAGE) 
 	pack inspect $(APP_IMAGE) --bom
