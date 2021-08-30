@@ -1,8 +1,8 @@
 
 APP_IMAGE=myorg/cnb-nodejs
-BUILDPACK_IMAGE=owner-buildpack
+BUILDPACK_IMAGE=watermark-labels-buildpack
 BUILDPACK_VERSION=0.0.3
-BUILDPACK_CNB=owner-buildpack.cnb
+BUILDPACK_CNB=watermark-labels-buildpack.cnb
 
 	
 inspect: buildpack
@@ -10,7 +10,7 @@ inspect: buildpack
 	pack inspect $(APP_IMAGE) --bom
 
 package-image: 
-	pack buildpack package $(BUILDPACK_IMAGE) --config packages/package.toml 
+	pack buildpack package $(BUILDPACK_IMAGE) --config package.toml 
 	docker tag $(BUILDPACK_IMAGE)  harbor.mytanzu.xyz/library/$(BUILDPACK_IMAGE):$(BUILDPACK_VERSION)
 	docker push harbor.mytanzu.xyz/library/$(BUILDPACK_IMAGE):$(BUILDPACK_VERSION)
 
