@@ -1,4 +1,4 @@
-APP_IMAGE=myorg/cnb-nodejs
+APP_IMAGE=myorg/java-app
 
 BUILDPACK_IMAGE=watermark-labels-buildpack
 BUILDPACK_VERSION=0.0.3
@@ -18,3 +18,6 @@ package-cnb:
 
 clean:
 	rm $(BUILDPACK_CNB)
+
+package-app:
+	pack build $(APP_IMAGE) --path sampleapp
