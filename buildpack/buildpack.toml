@@ -2,7 +2,7 @@ api = "0.6"
 
 [buildpack]
   id = "bmoussaud/watermark"
-  version = "0.0.3"
+  version = "0.0.4"
 
 [[stacks]]  
   id = "io.buildpacks.stacks.bionic"

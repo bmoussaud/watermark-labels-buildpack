@@ -14,22 +14,20 @@ echo "---> Owner Buildpack plan  ${plan_path}"
 
 cat >> "$layers_dir/launch.toml" <<EOL
 [[bom]]
-name = "owner"
+name = "watermark"
 
 [bom.metadata]
-version = "$ruby_version"
+version = "1.1"
 
 [[labels]]
-key = "kpack.builder.hostname"
-value = "${HOSTNAME}"
-
-[[labels]]
-key = "kpack.builder.instance"
+key = "watermark.instance"
 value = "mycompany-instance-one"
 
-key = "kpack.builder.host"
+[[labels]]
+key = "watermark.host"
 value = "${HOSTNAME}"
 EOL
 
 
-
+cat "$layers_dir/launch.toml"
+echo "done"

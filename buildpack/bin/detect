@@ -6,5 +6,8 @@ platform_dir="$1"
 plan="$2"
 
 echo "plan: ${plan}"
+#ls -l ${plan}
+echo "platform_dir: ${platform_dir}"
 
+#Always apply this watermark build pack
 exit 0
