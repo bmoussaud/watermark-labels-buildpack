@@ -9,12 +9,12 @@ inspect: buildpack
 	pack inspect $(APP_IMAGE) --bom
 
 package-image: 
-	pack buildpack package $(BUILDPACK_IMAGE) --config package.toml 
+	pack buildpack package $(BUILDPACK_IMAGE) --config buildpack/package.toml 
 	docker tag $(BUILDPACK_IMAGE)  harbor.mytanzu.xyz/library/$(BUILDPACK_IMAGE):$(BUILDPACK_VERSION)
 	docker push harbor.mytanzu.xyz/library/$(BUILDPACK_IMAGE):$(BUILDPACK_VERSION)
 
 package-cnb:
-	pack buildpack package $(BUILDPACK_CNB) --config packages/package.toml --format file
+	pack buildpack package $(BUILDPACK_CNB) --config package.toml --format file
 
 clean:
 	rm $(BUILDPACK_CNB)

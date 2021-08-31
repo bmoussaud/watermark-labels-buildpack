@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Executable: /bin/detect <platform[AR]> <plan[E]>, Working Dir: <app[AR]>
 set -eo pipefail
 
 platform_dir="$1"

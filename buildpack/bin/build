@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
+# Executable: /bin/build <layers[EIC]> <platform[AR]> <plan[ER]>, Working Dir: <app[AI]>
 
 set -euo pipefail
 
 layers_dir="$1"
 env_dir="$2/env"
-plan="$3"
+plan_path="$3"
 
 echo "---> Owner Buildpack layer_dir ${layers_dir} "
 echo "---> Owner Buildpack env_dir ${env_dir}"
-echo "---> Owner Buildpack plan  ${plan}"
+echo "---> Owner Buildpack plan  ${plan_path}"
 
 
 cat >> "$layers_dir/launch.toml" <<EOL

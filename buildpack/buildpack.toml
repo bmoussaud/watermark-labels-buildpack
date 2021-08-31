@@ -1,7 +1,7 @@
-api = "0.5"
+api = "0.6"
 
 [buildpack]
-  id = "mycompany/owner"
+  id = "bmoussaud/watermark"
   version = "0.0.3"
 
 [[stacks]]  
