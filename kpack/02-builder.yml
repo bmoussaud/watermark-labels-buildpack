@@ -1,0 +1,20 @@
+apiVersion: kpack.io/v1alpha1
+kind: Builder
+metadata:
+  name: my-watermark-springboot-builder  
+  namespace: kpack
+spec:
+  serviceAccount: harbor-service-account
+  tag: harbor.mytanzu.xyz/library/my-watermark-springboot-builder  
+  stack:
+    name: base
+    kind: ClusterStack
+  store:
+    name: my-customized-clusterstore 
+    kind: ClusterStore
+  order:
+  - group:
+    - id: paketo-buildpacks/java
+    - id: bmoussaud/watermark
+
+  

@@ -1,0 +1,15 @@
+apiVersion: kpack.io/v1alpha1
+kind: ClusterStore
+metadata:  
+  name: my-customized-clusterstore  
+spec:
+  serviceAccountRef:  
+    name: harbor-service-account
+    namespace: kpack
+  sources:
+  - image: gcr.io/paketo-buildpacks/java:5.8.0
+  - image: gcr.io/paketo-buildpacks/go
+  - image: gcr.io/paketo-buildpacks/nodejs
+  - image: gcr.io/paketo-buildpacks/dotnet-core
+  - image: harbor.mytanzu.xyz/library/watermark-labels-buildpack:0.0.4
+  

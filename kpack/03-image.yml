@@ -1,0 +1,20 @@
+apiVersion: kpack.io/v1alpha1
+kind: Image
+metadata:
+  name: my-watermark-sampleapp-image
+  namespace: kpack
+spec:
+  tag: harbor.mytanzu.xyz/library/my-watermark-sampleapp
+  serviceAccount: harbor-service-account
+  builder:
+    name: my-watermark-springboot-builder  
+    kind: Builder
+  source:
+    git:
+      url: https://github.com/bmoussaud/watermark-labels-buildpack
+      revision: master
+    subPath: sampleapp
+  #build: # Optional
+  #  env:
+  #    - name: BP_IMAGE_LABELS
+  #      value: kpack.builder.project=springboot kpack.builder.instance=tbs-2 kpack.builder.author=benoitmoussaud
