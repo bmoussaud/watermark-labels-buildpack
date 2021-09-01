@@ -29,7 +29,7 @@ watermark-local-package-app:
 	docker inspect $(APP_IMAGE) | grep watermark.host
 
 
-watermark-image-package-app:package-buildpack 
+watermark-image-package-app: package-buildpack 
 	pack build $(APP_IMAGE) --path sampleapp --buildpack $(REMOTE_REGISTRY)/$(BUILDPACK_IMAGE):$(BUILDPACK_VERSION)
 	docker inspect $(APP_IMAGE) | grep watermark.instance
 	docker inspect $(APP_IMAGE) | grep watermark.host
