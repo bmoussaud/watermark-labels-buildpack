@@ -58,6 +58,9 @@ watermark-kpack-package-app: package-buildpack
 	docker inspect harbor.mytanzu.xyz/library/my-watermark-sampleapp | grep watermark.instance
 	docker inspect harbor.mytanzu.xyz/library/my-watermark-sampleapp | grep watermark.host
 
+kpack-logs:
+	./kpack_logs.sh my-watermark-sampleapp-image kpack
+
 clean-kpack:
 	@printf "`tput bold`= $@`tput sgr0`\n"
 	kubectl delete -f kpack

@@ -14,7 +14,7 @@ spec:
       url: https://github.com/bmoussaud/watermark-labels-buildpack
       revision: master
     subPath: sampleapp
-  #build: # Optional
-  #  env:
-  #    - name: BP_IMAGE_LABELS
-  #      value: kpack.builder.project=springboot kpack.builder.instance=tbs-2 kpack.builder.author=benoitmoussaud
+  build: # Optional
+    env:
+      - name: BP_IMAGE_LABELS
+        value: watermark.project=ABC  watermark.author=benoitmoussaud
