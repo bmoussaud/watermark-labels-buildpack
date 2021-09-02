@@ -15,6 +15,6 @@ spec:
       revision: master
     subPath: sampleapp
   build: # Optional
-    env:
+    env:      
       - name: BP_IMAGE_LABELS
         value: watermark.project=ABC  watermark.author=benoitmoussaud

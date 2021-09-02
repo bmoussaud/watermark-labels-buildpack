@@ -2,9 +2,23 @@
 
 ## Goal
 
-The aim of this buildpack is to set labels on all the built images. What's for ? to track the images built with managed buildbacks (eg Tanzu Build Service) versus the images fetched from external providers. Exemple If you want or you need to track the usage of your build services based on builpackage versus a Dockerfile based solution to build the images. The default implementation of the `watermark` buildpack add 2 labels:
-* `watermark.instance` : mycompany-instance-one
+The aim of this buildpack is to set labels on all the built images. What's for ? to track the images built with managed buildbacks (eg Tanzu Build Service) versus the images fetched from external providers. Exemple If you want or you need to track the usage of your build services based on builpackage versus a Dockerfile based solution to build the images. 
+
+The default implementation of the `watermark` buildpack [adds 2 labels](buildpack/bin/build):
+
+* `watermark.instance` : mycompany-instance-one (it's typically this value you want to modify)
 * `watermark.host`: filled with the hostname (podname) that build the image (${HOSTNAME})
+
+If you want to track the built images without using this buildpack you should configure all the `Image` resources to add them manually.
+thins snipped adds `watermark.instance` on the image resource using the [image label build pack](https://github.com/paketo-buildpacks/image-labels) 
+````
+build: # Optional
+    env:
+      - name: BP_IMAGE_LABELS
+        value: watermark.project=ABC  watermark.author=benoitmoussaud watermark.instance=mycompany-instance-one 
+```
+
+BTW: it's impossible to inject the hostname (or anyruntime information the date...)
 
 ### Build the buildpack as an image  
 
