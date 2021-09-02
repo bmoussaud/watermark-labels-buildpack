@@ -1,41 +1,43 @@
 # Watermark buildpack
 
-## goal
+## Goal
 
-## process
+The aim of this buildpack is to set labels on all the built image
 
-* Build the buildpack as an image  
+### Build the buildpack as an image  
 
 ````
 make package-buildpack
 ````
 
-* Build the sample application 
+### Build the sample application 
 
 ````
 make package-app
 ````
 
-* Build the sample application using `watermark` buildpack locally
+### Build the sample application using `watermark` buildpack locally
 
 ````
 make watermark-local-package-app
 ````
 
-* Build the sample application using `watermark` buildpack built as a image pushed on a remote regsitry
+###  Build the sample application using `watermark` buildpack built as a image pushed on a remote regsitry
 
 ````
 make watermark-local-package-app
 ````
 
-* Build the sample application using `watermark` buildpack and `kpack` 
+### Build the sample application using `watermark` buildpack and `kpack` 
 
 ````
 make watermark-kpack-package-app
 ````
 
 the Make apply the resources defined in the `kpack` directory into the `kpack` namespace already configured.
+
 The 3 resources are:
+
 * a custom `ClusterStore` that includes the buildpack to use : common buildpacks from paketo and the `watermark` buildpack
 * a custom `Builder` that combines the stack, the store and the order of the applied buildpack
 * a custom `Image`that creates the link between the source (git) and the builder.
