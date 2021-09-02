@@ -2,7 +2,9 @@
 
 ## Goal
 
-The aim of this buildpack is to set labels on all the built image
+The aim of this buildpack is to set labels on all the built images. What's for ? to track the images built with managed buildbacks (eg Tanzu Build Service) versus the images fetched from external providers. Exemple If you want or you need to track the usage of your build services based on builpackage versus a Dockerfile based solution to build the images. The default implementation of the `watermark` buildpack add 2 labels:
+* `watermark.instance` : mycompany-instance-one
+* `watermark.host`: filled with the hostname (podname) that build the image (${HOSTNAME})
 
 ### Build the buildpack as an image  
 
@@ -38,9 +40,9 @@ the Make apply the resources defined in the `kpack` directory into the `kpack` n
 
 The 3 resources are:
 
-* a custom `ClusterStore` that includes the buildpack to use : common buildpacks from paketo and the `watermark` buildpack
-* a custom `Builder` that combines the stack, the store and the order of the applied buildpack
-* a custom `Image`that creates the link between the source (git) and the builder.
+* a [custom `ClusterStore`](kpack/01-store.yml) that includes the buildpack to use : common buildpacks from paketo and the `watermark` buildpack
+* a [custom `Builder`](kpack/02-builder.yml) that combines the stack, the store and the order of the applied buildpack
+* a [custom `Image`](kpack/03-image.yml) that manages the link between the source (git) and the builder.
 
 the output is 
 
