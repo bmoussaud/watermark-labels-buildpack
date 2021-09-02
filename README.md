@@ -35,10 +35,10 @@ make watermark-kpack-package-app
 ````
 
 the Make apply the resources defined in the `kpack` directory into the `kpack` namespace already configured.
-The resources are
-    * a custom `ClusterStore` that includes the buildpack to use : common buildpacks from paketo and the `watermark` buildpack
-    * a custom `Builder` that combines the stack, the store and the order of the applied buildpack
-    * a custom `Image`that creates the link between the source (git) and the builder.
+The 3 resources are:
+* a custom `ClusterStore` that includes the buildpack to use : common buildpacks from paketo and the `watermark` buildpack
+* a custom `Builder` that combines the stack, the store and the order of the applied buildpack
+* a custom `Image`that creates the link between the source (git) and the builder.
 
 the output is 
 
